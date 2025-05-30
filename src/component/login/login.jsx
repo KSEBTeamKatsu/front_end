@@ -33,11 +33,14 @@ function LoginForm() {
       console.log("token: ", data.token);
 
       // ✅ 토큰을 localStorage나 sessionStorage에 저장
-      sessionStorage.setItem("authToken", token);
-      console.log("session: ", sessionStorage.getItem("authToken"));
+      localStorage.setItem("authToken", token);
 
+      console.log("session: ", localStorage.getItem("authToken"));
+
+      window.opener.postMessage("loginSuccess", "*");
       alert("로그인 성공!");
       setError("");
+      window.close(); // 팝업 창 닫기
       //   navigate("/home");
       // 필요 시 페이지 이동 or 상태 업데이트
     } catch (err) {
