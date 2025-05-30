@@ -1,0 +1,66 @@
+.board-container {
+  width: 100vw; /* 화면 가로 꽉 채움 */
+  height: 100vh; /* 화면 세로 꽉 채움 */
+  margin: 0; /* 여백 제거 */
+  padding: 24px 40px; /* 좌우 약간 여유 주기 */
+  background: #fff;
+  border-radius: 0; /* 모서리 없애기 (원하면 0) */
+  box-shadow: none; /* 그림자 없애기 */
+  overflow-y: auto; /* 세로 스크롤 가능하게 */
+  box-sizing: border-box; /* 패딩까지 포함하여 크기 계산 */
+  display: flex;
+  flex-direction: column;
+}
+
+.board-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.write-btn {
+  align-self: center; /* 버튼 가운데 정렬 */
+  padding: 14px 32px;
+  background-color: #007aff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.write-btn:hover {
+  background-color: #005bb5;
+}
+
+.post-list {
+  list-style: none;
+  padding: 0;
+  flex-grow: 1; /* 게시글 리스트가 남은 영역 꽉 채우도록 */
+  overflow-y: auto; /* 게시글이 많으면 스크롤 가능 */
+}
+
+.post-item {
+  padding: 18px 24px;
+  border-bottom: 1px solid #ddd;
+}
+
+.post-item h3 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+
+.post-item p {
+  margin: 0;
+  white-space: pre-wrap;
+  color: #555;
+}
+
+.no-posts {
+  text-align: center;
+  color: #999;
+  padding: 60px 0;
+  font-size: 18px;
+}

@@ -1,0 +1,99 @@
+/* 전체 메뉴바 컨테이너 */
+.nav-container {
+  position: fixed; /* 화면 상단에 고정 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-color: #ffffff; /* 배경색 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 하단 그림자 */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  z-index: 1000; /* 다른 요소 위에 표시 */
+  box-sizing: border-box;
+}
+
+/* 로고와 왼쪽 메뉴 그룹 */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* 왼쪽 메뉴 (게시판, 갤러리) */
+.nav-links-left {
+  display: flex;
+  gap: 20px;
+}
+
+/* 오른쪽 메뉴 (로그인, 가입하기) */
+.nav-links-right {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+/* 로고 스타일 */
+.nav-logo {
+  font-size: 40px;
+  font-weight: bold;
+  color: #916af3;
+  font-family: "Odor Mean Chey", serif;
+  text-decoration: none;
+}
+
+/* 각 메뉴 링크 스타일 */
+.nav-link {
+  text-decoration: none;
+  color: #333333;
+  font-weight: 500;
+  font-size: 25px;
+  transition: color 0.2s ease;
+  cursor: pointer; /* 클릭 가능 커서 */
+}
+
+/* 마우스 오버 시 링크 색상 변경 */
+.nav-link:hover {
+  color: red;
+}
+
+/* 가입하기 버튼 스타일 */
+.nav-link.register {
+  background-color: #916af3;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+/* 가입하기 버튼 마우스 오버 시 배경색 변경 */
+.nav-link.register:hover {
+  background-color: #7b57e0;
+}
+
+/* 반응형 디자인: 화면 너비가 768px 이하일 때 */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    height: auto;
+    padding: 10px 20px;
+  }
+
+  .nav-left {
+    width: 100%;
+    justify-content: center;
+    gap: 40px;
+  }
+
+  .nav-links-left,
+  .nav-links-right {
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+    margin-top: 10px;
+  }
+}
