@@ -10,7 +10,7 @@ function Nav() {
     const height = 400;
     // 화면 중앙에 팝업 창이 열리도록 위치 계산
     const left = window.screenX + (window.outerWidth - width) / 2;
-    const top = window.screenY + (window.outerHeight - height) / 2;
+    const top = window.screenY + (window.outerHeight - height) / 2 - 200;
 
     // 로그인 팝업 창 열기
     window.open(
@@ -27,7 +27,7 @@ function Nav() {
     const height = 400;
     // 화면 중앙에 팝업 창이 열리도록 위치 계산
     const left = window.screenX + (window.outerWidth - width) / 2;
-    const top = window.screenY + (window.outerHeight - height) / 2;
+    const top = window.screenY + (window.outerHeight - height) / 2 - 200;
 
     // 회원가입 팝업 창 열기
     window.open(
@@ -81,6 +81,14 @@ function Nav() {
     setIsLoggedIn(false); // 로그인 상태 업데이트
   };
 
+  // 로그인 상태가 아니면 경고 띄우고 이동 막기
+  const handleProtectedLinkClick = (e) => {
+    if (!isLoggedIn) {
+      e.preventDefault(); // 링크 이동 막기
+      alert("로그인 후에 이용 가능합니다.");
+    }
+  };
+
   // 현재 로그인 상태를 콘솔에 출력 (디버깅용)
   console.log("isLoggedIn", isLoggedIn);
 
@@ -92,10 +100,18 @@ function Nav() {
           AI 분류
         </Link>
         <nav className="nav-links-left">
-          <Link className="nav-link" to="/board">
+          <Link
+            className="nav-link"
+            to="/board"
+            onClick={handleProtectedLinkClick}
+          >
             게시판
           </Link>
-          <Link className="nav-link" to="/gallery">
+          <Link
+            className="nav-link"
+            to="/gallery"
+            onClick={handleProtectedLinkClick}
+          >
             갤러리
           </Link>
         </nav>

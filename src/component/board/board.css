@@ -54,8 +54,15 @@
 
 .post-item p {
   margin: 0;
-  white-space: pre-wrap;
   color: #555;
+
+  /* 내용 2줄까지만 보이게 하는 스타일 */
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* 2줄 제한 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal; /* pre-wrap 대신 일반 줄바꿈 없이 */
 }
 
 .no-posts {
@@ -63,4 +70,30 @@
   color: #999;
   padding: 60px 0;
   font-size: 18px;
+}
+
+/* 페이지네이션 스타일 추가 */
+.pagination {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.page-btn {
+  margin: 0 6px;
+  padding: 6px 14px;
+  border: none;
+  background-color: #eee;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.page-btn:hover {
+  background-color: #ccc;
+}
+
+.page-btn.active {
+  background-color: #007aff;
+  color: white;
 }

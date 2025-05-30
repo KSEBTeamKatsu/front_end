@@ -15,53 +15,51 @@ function App() {
   ]);
   return (
     <BrowserRouter>
-      <div className="App">
-        <Routes>
-          {/* 일반 페이지는 네비게이션 포함 */}
-          <Route
-            path="/"
-            element={
-              <>
-                <Nav />
-                <FileUpload />
-              </>
-            }
-          />
-          <Route
-            path="/board"
-            element={
-              <>
-                <Nav />
-                <Board posts={posts} />
-              </>
-            }
-          />
-          <Route
-            path="/write"
-            element={
-              <>
-                <Nav />
-                <Write posts={posts} setPosts={setPosts} />
-              </>
-            }
-          />
-          <Route
-            path="/gallery"
-            element={
-              <>
-                <Nav />
-                <Gallery />
-                <FileUpload />
-              </>
-            }
-          />
+      <Routes>
+        {/* 일반 페이지는 네비게이션 포함 */}
+        <Route
+          path="/"
+          element={
+            <div className="App">
+              <Nav />
+              <FileUpload />
+            </div>
+          }
+        />
+        <Route
+          path="/board"
+          element={
+            <div className="App">
+              <Nav />
+              <Board posts={posts} />
+            </div>
+          }
+        />
+        <Route
+          path="/write"
+          element={
+            <div className="App">
+              <Nav />
+              <Write posts={posts} setPosts={setPosts} />
+            </div>
+          }
+        />
+        <Route
+          path="/gallery"
+          element={
+            <div className="App">
+              <Nav />
+              <Gallery />
+              <FileUpload />
+            </div>
+          }
+        />
 
-          <Route path="/register-popup" element={<Register />} />
+        <Route path="/register-popup" element={<Register />} />
 
-          {/* 로그인 팝업은 Nav 없이 Login만 */}
-          <Route path="/login-popup" element={<Login />} />
-        </Routes>
-      </div>
+        {/* 로그인 팝업은 Nav 없이 Login만 */}
+        <Route path="/login-popup" element={<Login />} />
+      </Routes>
     </BrowserRouter>
   );
 }

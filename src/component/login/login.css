@@ -56,11 +56,11 @@
 }
 
 html,
-body,
-#root {
-  margin: 0;
-  padding: 0;
+body {
+  margin: 0 !important;
+  padding: 0 !important;
   height: 100%;
-  overflow: hidden; /* 스크롤 숨기기 */
-  background: transparent; /* 배경 투명 */
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
 }
