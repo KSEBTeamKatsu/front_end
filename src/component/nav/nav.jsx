@@ -27,6 +27,8 @@ function Nav() {
       `width=${width},height=${height},left=${left},top=${top},resizable=no,scrollbars=no`
     );
   };
+  const isLoggedIn = sessionStorage.getItem("authToken");
+  console.log("isLoggedIn", isLoggedIn);
   return (
     <header className="nav-container">
       <div className="nav-left">
@@ -44,13 +46,19 @@ function Nav() {
       </div>
 
       <nav className="nav-links-right">
-        <Link className="nav-link" onClick={openLoginPopup}>
-          로그인
-        </Link>
-
-        <Link className="nav-link register" onClick={openRegisterPopup}>
-          가입하기
-        </Link>
+        {!isLoggedIn && (
+          <>
+            <Link className="nav-link" onClick={openLoginPopup}>
+              로그인
+            </Link>
+            <Link className="nav-link register" onClick={openRegisterPopup}>
+              가입하기
+            </Link>
+          </>
+        )}
+        {isLoggedIn && (
+          <span className="nav-link">환영합니다!</span> // 로그인 후 보여줄 내용
+        )}
       </nav>
     </header>
   );
