@@ -1,4 +1,3 @@
-// LoginForm.jsx
 import React, { useState } from "react";
 import "./login.css";
 
@@ -11,7 +10,7 @@ function LoginForm() {
     e.preventDefault();
 
     if (!id || !pw) {
-      setError("이메일과 비밀번호를 모두 입력해주세요.");
+      setError("아이디와 비밀번호를 모두 입력해주세요.");
       return;
     }
 
@@ -20,31 +19,25 @@ function LoginForm() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id, pw }),
-        credentials: "include", // 세션 쿠키를 포함시켜야 서버 세션 유지 가능
+        credentials: "include",
       });
 
-      if (!response.ok) {
-        throw new Error("로그인 실패");
+      if (response.status === 401) {
+        setError("아이디 또는 비밀번호가 잘못되었습니다.");
+        return;
       }
 
-      const data = await response.json();
-
-      const token = data.token;
-      console.log("token: ", data.token);
-
-      // ✅ 토큰을 localStorage나 sessionStorage에 저장
-      localStorage.setItem("authToken", token);
-
-      console.log("session: ", localStorage.getItem("authToken"));
+      if (!response.ok) {
+        setError("서버 오류가 발생했습니다. 다시 시도해주세요.");
+        return;
+      }
 
       window.opener.postMessage("loginSuccess", "*");
       alert("로그인 성공!");
       setError("");
-      window.close(); // 팝업 창 닫기
-      //   navigate("/home");
-      // 필요 시 페이지 이동 or 상태 업데이트
+      window.close();
     } catch (err) {
-      setError("로그인 중 문제가 발생했습니다.");
+      setError("네트워크 오류가 발생했습니다.");
       console.error(err);
     }
   };
