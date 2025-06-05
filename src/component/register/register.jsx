@@ -27,22 +27,24 @@ function Register() {
         body: JSON.stringify({ id, pw }),
         credentials: "include", // 서버 세션 유지용
       });
-
+      
       if (!response.ok) {
-        throw new Error("회원가입 실패");
+        const errorMsg = await response.text();
+        setError(errorMsg); // 서버에서 보낸 에러 메시지
+      } else {
+        // 회원가입 성공 시
+        setError("");
+        alert("회원가입 성공!");
+
+        // 부모 창에 메시지 보내기 (필요 시)
+        if (window.opener) {
+          window.opener.postMessage("registerSuccess", "*");
+        }
+
+        // 팝업 창 닫기
+        window.close();
       }
-
-      // 회원가입 성공 시
-      setError("");
-      alert("회원가입 성공!");
-
-      // 부모 창에 메시지 보내기 (필요 시)
-      if (window.opener) {
-        window.opener.postMessage("registerSuccess", "*");
-      }
-
-      // 팝업 창 닫기
-      window.close();
+      
     } catch (err) {
       setError("회원가입 중 문제가 발생했습니다.");
       console.error(err);
