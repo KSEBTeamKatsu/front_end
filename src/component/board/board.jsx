@@ -59,7 +59,7 @@ function Board() {
           <li className="no-posts">등록된 게시글이 없습니다.</li>
         ) : (
           currentPosts.map((post) => (
-            <li key={post.id} className="post-item">
+            <li key={post.postId} className="post-item">
               <h3>{post.title}</h3>
               {/* content는 2줄까지만 보여주도록 CSS에서 처리 */}
               <p className="content-preview">{post.content}</p>

@@ -7,7 +7,7 @@ function Write({ posts, setPosts }) {
   const [content, setContent] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
 
     if (!title || !content) {
@@ -15,18 +15,25 @@ function Write({ posts, setPosts }) {
       return;
     }
 
-    // 새로운 게시글 객체 생성 (id는 간단히 posts.length + 1로 설정)
-    const newPost = {
-      id: posts.length + 1,
-      title,
-      content,
-    };
+    try {
+      // 백엔드로 POST 요청 보내기
+      const response = await fetch("/api/posts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({ title, content, userId: "login ID" }), // userId는 필요에 따라 프론트에서 보내거나 백엔드에서 처리
+      });
 
-    // posts 상태에 새 게시글 추가
-    setPosts([newPost, ...posts]);
+      if (!response.ok) throw new Error("게시글 작성 실패");
 
-    // 작성 후 게시판 페이지로 이동
-    navigate("/board");
+      // 게시글 작성 후 게시판으로 이동
+      navigate("/board");
+    } catch (err) {
+      console.error(err);
+      alert("게시글 작성 중 오류가 발생했습니다");
+    }
   };
 
   return (
