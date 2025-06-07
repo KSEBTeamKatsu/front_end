@@ -20,13 +20,14 @@
 }
 
 .upload-btn {
-  width: 50%;
-  padding: 5%;
+  width: 40%;
+  padding: 3%;
   margin-bottom: 20%;
   background-color: #916af3;
   color: white;
-  font-size: 2vw;
-  font-weight: 600;
+  font-size: 1.5vw;
+  font-weight: 500;
+  font-family: 'Pretendard-Regular', sans-serif;
   border: none;
   border-radius: 6px;
   cursor: pointer;

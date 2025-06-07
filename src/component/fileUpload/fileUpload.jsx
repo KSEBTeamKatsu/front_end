@@ -135,7 +135,7 @@ function FileUpload() {
       {error && <p className="error">{error}</p>}
       {imageFiles.length === 0 ? (
         <button type="button" className="upload-btn" onClick={handleClick}>
-          여러 이미지 선택 또는 드래그 앤 드롭
+          이미지 선택 또는 드래그 앤 드롭
         </button>
       ) : (
         <div className="file-preview">

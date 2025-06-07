@@ -1,3 +1,11 @@
+/* Pretendard-Regular 글꼴 정의 */
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
 /* 전체 메뉴바 컨테이너 */
 .nav-container {
   position: fixed; /* 화면 상단에 고정 */
@@ -18,14 +26,14 @@
 /* 로고와 왼쪽 메뉴 그룹 */
 .nav-left {
   display: flex;
-  align-items: center;
-  gap: 20px;
+  align-items: flex-end;
+  gap: 50px;
 }
 
 /* 왼쪽 메뉴 (게시판, 갤러리) */
 .nav-links-left {
   display: flex;
-  gap: 20px;
+  gap: 30px;
 }
 
 /* 오른쪽 메뉴 (로그인, 가입하기) */
@@ -38,9 +46,9 @@
 /* 로고 스타일 */
 .nav-logo {
   font-size: 40px;
-  font-weight: bold;
+  font-weight: 600;
   color: #916af3;
-  font-family: "Odor Mean Chey", serif;
+  font-family: 'Pretendard-Regular', sans-serif;
   text-decoration: none;
 }
 
@@ -49,7 +57,8 @@
   text-decoration: none;
   color: #333333;
   font-weight: 500;
-  font-size: 25px;
+  font-size: 30px;
+  font-family: 'Pretendard-Regular', sans-serif;
   transition: color 0.2s ease;
   cursor: pointer; /* 클릭 가능 커서 */
 }
@@ -65,7 +74,8 @@
   color: #ffffff;
   padding: 8px 16px;
   border-radius: 5px;
-  font-weight: bold;
+  font-weight: 500;
+  font-family: 'Pretendard-Regular', sans-serif;
   transition: background-color 0.2s ease;
 }
 
