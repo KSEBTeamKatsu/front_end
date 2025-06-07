@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./board.css";
+import SessionChecker from '../SessionChecker';
 
 function Board() {
   const navigate = useNavigate();
@@ -12,7 +13,10 @@ function Board() {
     const fetchPosts = async () => {
       try {
         // 백엔드 프록시 설정에 맞춰 /api/posts 로 요청
-        const response = await fetch("/api/posts");
+        const response = await fetch("/api/posts", {
+          method: "GET",
+          credentials: "include", // 쿠키 전송
+        });
 
         if (!response.ok)
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -50,6 +54,7 @@ function Board() {
 
   return (
     <div className="board-container">
+      <SessionChecker />
       <h2>게시판</h2>
       <button className="write-btn" onClick={goToWrite}>
         글 작성하기
